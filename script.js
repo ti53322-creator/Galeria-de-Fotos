@@ -15,7 +15,7 @@ const galleryData = {
         title: "Sueños",
         desc: "Destinos internacionales, naturaleza y metas personales a futuro.",
         images: [
-         { title: "Titulación Profesional", caption: "Conclusión de la carrera universitaria", desc: "Culminar la carrera académica de Ingeniería en Sistemas para consolidar bases técnicas sólidas y abrir oportunidades profesionales.", url: "assets/sueños1.jpg" },
+            { title: "Titulación Profesional", caption: "Conclusión de la carrera universitaria", desc: "Culminar la carrera académica de Ingeniería en Sistemas para consolidar bases técnicas sólidas y abrir oportunidades profesionales.", url: "assets/sueños1.jpg" },
             { title: "Emprendimiento Propio", caption: "Creación y gestión de empresa", desc: "Fundar y escalar un negocio propio en el sector tecnológico para generar valor e independencia laboral.", url: "assets/sueños2.jpg" },
             { title: "Libertad Financiera", caption: "Solvencia y patrimonio sólido", desc: "Construir una economía estable a través de múltiples fuentes de ingreso, inversiones y gestión responsable del capital.", url: "assets/sueños3.jpg" },
             { title: "Ferrari F8 Tributo", caption: "Superdeportivo de alto rendimiento", desc: "Adquirir un Ferrari F8 como símbolo de esfuerzo personal, pasión automotriz y logro de metas superadas.", url: "assets/sueños4.jpg" },
@@ -25,10 +25,10 @@ const galleryData = {
     peliculas: {
         title: "Películas",
         desc: "Mis peliculas y series favoritas",
-        images:  [
+        images: [
             { title: "Corazones Malheridos", caption: "Romance y superación", desc: "Un matrimonio por conveniencia entre una aspirante a música y un marine que se convierte en una historia de amor inesperada e intensa.", url: "assets/pelicula1.jpg" },
             { title: "Bridgerton", caption: "Drama de época y romance", desc: "Intrigas, alta sociedad y romances apasionados ambientados en la época de la Regencia en Londres.", url: "assets/pelicula2.jpg" },
-           { title: "Lucy", caption: "Ciencia ficción y acción", desc: "Una mujer adquiere habilidades sobrehumanas y capacidades cerebrales ilimitadas tras ser expuesta accidentalmente a una droga sintética.", url: "assets/pelicula3.jpg" },
+            { title: "Lucy", caption: "Ciencia ficción y acción", desc: "Una mujer adquiere habilidades sobrehumanas y capacidades cerebrales ilimitadas tras ser expuesta accidentalmente a una droga sintética.", url: "assets/pelicula3.jpg" },
             { title: "Off Campus", caption: "Saga de romance universitario", desc: "Adaptación de la popular saga literaria centrada en jugadores de hockey universitarios y sus historias de amor y crecimiento personal.", url: "assets/pelicula4.jpg" },
             { title: "La Hipótesis del Amor", caption: "Romance en el mundo académico", desc: "Una científica y un temido profesor entablan una relación falsa en el laboratorio que termina desafiando todas las teorías del amor.", url: "assets/pelicula5.jpg" }
         ]
@@ -39,7 +39,7 @@ const galleryData = {
         images: [
             { title: "Fuerza Regida", caption: "Música regional mexicana y corridos urbanos", desc: "Energía inigualable en el escenario con éxitos que fusionan el sonido tradicional de banda y tuba con ritmos urbanos contemporáneos.", url: "assets/cantante1.jpg" },
             { title: "Olivia Rodrigo", caption: "Pop rock y baladas emotivas", desc: "Letras introspectivas, voz potente y espectáculos masivos llenos de emotividad que conectan con toda una generación.", url: "assets/cantante2.jpg" },
-          { title: "Bad Bunny", caption: "Reggaeton, trap latino y versatilidad musical", desc: "Fenómeno global con producciones rompedoras de récords, versatilidad de estilos e impactos culturales masivos en la música latina.", url: "assets/cantante3.jpg" },
+            { title: "Bad Bunny", caption: "Reggaeton, trap latino y versatilidad musical", desc: "Fenómeno global con producciones rompedoras de récords, versatilidad de estilos e impactos culturales masivos en la música latina.", url: "assets/cantante3.jpg" },
             { title: "Tito Double P", caption: "Corridos bélicos y composición moderna", desc: "Composición y estilo distintivo dentro de la nueva ola del movimiento regional mexicano contemporáneo.", url: "assets/cantante4.jpg" },
             { title: "Carla Morrison", caption: "Indie pop y baladas acústicas", desc: "Interpretaciones íntimas, letras profundas sobre el amor y el desamor cargadas de sentimentalismo acústico.", url: "assets/cantante5.jpg" }
         ]
@@ -48,7 +48,7 @@ const galleryData = {
         title: "Hobbies",
         desc: "Fotografía, videojuegos, lectura y vida activa.",
         images: [
-           { title: "Voleibol", caption: "Deporte de equipo y agilidad", desc: "Practicar voleibol para mantener el trabajo en equipo, los reflejos rápidos y una vida activa en la cancha.", url: "assets/hobbies1.jpg" },
+            { title: "Voleibol", caption: "Deporte de equipo y agilidad", desc: "Practicar voleibol para mantener el trabajo en equipo, los reflejos rápidos y una vida activa en la cancha.", url: "assets/hobbies1.jpg" },
             { title: "Dibujar", caption: "Ilustración y expresión artística", desc: "Explorar la creatividad a través del bocetaje, trazos a lápiz e ilustración digital para dar vida a ideas visuales.", url: "assets/hobbies2.jpg" },
             { title: "Lectura", caption: "Libros, novelas y aprendizaje", desc: "Dedicar tiempo a la lectura de buenas historias y libros formativos acompañado de un espacio tranquilo.", url: "assets/hobbies3.jpg" },
             { title: "Fotografía", caption: "Captura de momentos y paisajes", desc: "Retratar encuadres creativos, paisajes únicos y momentos especiales con la cámara.", url: "assets/hobbies4.jpg" },
@@ -139,7 +139,7 @@ function showHome() {
     startCarousel();
 }
 
-// --- GENERACIÓN DE GALERÍA DE IMÁGENES E INFORMACIÓN GENERAL ---
+// --- GENERACIÓN DE GALERÍA DE IMÁGENES ---
 function selectCategory(categoryKey) {
     const data = galleryData[categoryKey];
     if (!data) return;
@@ -158,7 +158,7 @@ function selectCategory(categoryKey) {
     document.getElementById('category-desc').innerText = data.desc;
     document.getElementById('card-count').innerText = `${data.images.length} imágenes`;
 
-    // 1. Mostrar solo imágenes (sin tarjetas ni textos)
+    // Mostrar solo las imágenes (al dar clic se abre el modal con su información)
     const grid = document.getElementById('gallery-grid');
     grid.innerHTML = '';
 
@@ -172,34 +172,23 @@ function selectCategory(categoryKey) {
         `;
         grid.appendChild(imgWrapper);
     });
+}
 
-    // 2. Generar el recuadro general con la información de las 5 imágenes
-    const infoContainer = document.getElementById('general-info-box');
-    infoContainer.innerHTML = `
-        <div class="bg-slate-800/80 border border-slate-700/70 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-xl mt-8">
-            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2 border-b border-slate-700 pb-3">
-                <i class="fa-solid fa-circle-info text-indigo-400"></i> Información General de las Imágenes (${data.title})
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                ${data.images.map((img, index) => `
-                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/40 space-y-2">
-                        <div class="flex items-center space-x-2">
-                            <span class="w-6 h-6 rounded-full bg-indigo-600/30 text-indigo-400 font-bold text-xs flex items-center justify-center border border-indigo-500/30">
-                                ${index + 1}
-                            </span>
-                            <h4 class="font-semibold text-white text-base">${img.title}</h4>
-                        </div>
-                        <p class="text-xs font-medium text-indigo-300 flex items-center gap-1">
-                            <i class="fa-solid fa-tag text-[10px]"></i> ${img.caption}
-                        </p>
-                        <p class="text-slate-300 text-xs leading-relaxed">
-                            ${img.desc}
-                        </p>
-                    </div>
-                `).join('')}
-            </div>
-        </div>
-    `;
+// --- FUNCIONES DEL MODAL LIGHTBOX ---
+function openModal(url, title, desc) {
+    const modal = document.getElementById('image-modal');
+    document.getElementById('modal-img').src = url;
+    document.getElementById('modal-title').innerText = title;
+    document.getElementById('modal-desc').innerText = desc;
+    
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+}
+
+function closeModal() {
+    const modal = document.getElementById('image-modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
 }
 
 // --- CONTROL PARA MINIMIZAR/MAXIMIZAR EL WIDGET DE SPOTIFY ---
@@ -220,3 +209,6 @@ function toggleSpotifyWidget() {
         icon.className = 'fa-solid fa-chevron-down';
     }
 }
+
+// Iniciar el carrusel automáticamente al cargar la página
+document.addEventListener('DOMContentLoaded', startCarousel);
