@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Imágenes</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between">
+
+    <!-- Barra de Navegación Superior con Menú Desplegable -->
+    <header class="bg-slate-800/90 backdrop-blur-md border-b border-slate-700/60 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            
+            <!-- Logo y Título -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="showHome()">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center font-bold text-xl text-white shadow-lg shadow-indigo-500/30">
+                    G
+                </div>
+                <h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+                    Galería de Imágenes
+                </h1>
+            </div>
+            
+            <!-- Menú Principal -->
+            <nav class="flex items-center space-x-2 text-sm font-medium">
+                <!-- Botón de Inicio -->
+                <button id="btn-home" onclick="showHome()" class="px-4 py-2 rounded-lg bg-indigo-600 text-white font-semibold transition">
+                    <i class="fa-solid fa-house mr-1.5"></i> Inicio
+                </button>
+
+                <!-- Menú Desplegable de Categorías -->
+                <div class="relative">
+                    <button id="dropdown-btn" onclick="toggleDropdown()" class="px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-700/50 transition flex items-center space-x-2">
+                        <span>Categorías</span>
+                        <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200" id="dropdown-icon"></i>
+                    </button>
+
+                    <!-- Opciones Desplegables -->
+                    <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 z-50">
+                        <button onclick="selectCategory('carrera')" class="w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:bg-indigo-600 hover:text-white transition flex items-center space-x-2">
+                            <i class="fa-solid fa-briefcase w-4 text-center"></i>
+                            <span>Carrera</span>
+                        </button>
+                        <button onclick="selectCategory('suenos')" class="w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:bg-indigo-600 hover:text-white transition flex items-center space-x-2">
+                            <i class="fa-solid fa-cloud-moon w-4 text-center"></i>
+                            <span>Sueños</span>
+                        </button>
+                        <button onclick="selectCategory('peliculas')" class="w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:bg-indigo-600 hover:text-white transition flex items-center space-x-2">
+                            <i class="fa-solid fa-film w-4 text-center"></i>
+                            <span>Películas</span>
+                        </button>
+                        <button onclick="selectCategory('cantante')" class="w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:bg-indigo-600 hover:text-white transition flex items-center space-x-2">
+                            <i class="fa-solid fa-music w-4 text-center"></i>
+                            <span>Cantante</span>
+                        </button>
+                        <button onclick="selectCategory('hobbies')" class="w-full text-left px-4 py-2.5 text-sm text-slate-300 hover:bg-indigo-600 hover:text-white transition flex items-center space-x-2">
+                            <i class="fa-solid fa-gamepad w-4 text-center"></i>
+                            <span>Hobbies</span>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+        
+        <!-- SECCIÓN 1: PORTADA / INICIO CON CARRUSEL -->
+        <section id="home-section" class="relative rounded-3xl overflow-hidden bg-slate-800/60 border border-slate-700/60 p-6 sm:p-10 my-4 backdrop-blur-sm">
+            <div class="absolute -top-24 -left-24 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
+
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Lado Izquierdo: Mensaje de Bienvenida -->
+                <div class="lg:col-span-5 text-center lg:text-left space-y-6">
+                  
+                    <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                        Bienvenido a mi <br>
+                        <span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Galería</span>
+                    </h2>
+                    
+                    <div>
+                        <button onclick="selectCategory('carrera')" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold text-base shadow-xl shadow-indigo-500/30 hover:scale-105 transition-transform duration-200">
+                            Explorar Galería <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Lado Derecho: Carrusel de Imágenes -->
+                <div class="lg:col-span-7">
+                    <div class="relative rounded-2xl overflow-hidden border border-slate-700/70 shadow-2xl h-72 sm:h-96 group">
+                        
+                        <!-- Imágenes del Carrusel (rutas locales en assets/portada-X.jpg) -->
+                        <div id="carousel-track" class="w-full h-full relative">
+                            <div class="carousel-slide absolute inset-0 opacity-100 transition-opacity duration-700 ease-in-out">
+                                <img src="assets/portada1.jpg" alt="Portada 1" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/1e293b/ffffff?text=Portada+1'">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
+                                    <p class="text-white text-sm font-semibold">Carrera</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                                <img src="assets/portada2.jpg" alt="Portada 2" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/1e293b/ffffff?text=Portada+2'">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
+                                    <p class="text-white text-sm font-semibold">Sueños </p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                                <img src="assets/portada3.jpg" alt="Portada 3" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/1e293b/ffffff?text=Portada+3'">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
+                                    <p class="text-white text-sm font-semibold">Peliculas y Series</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                                <img src="assets/portada4.jpg" alt="Portada 4" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/1e293b/ffffff?text=Portada+4'">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
+                                    <p class="text-white text-sm font-semibold">Música & Artistas Favoritos</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                                <img src="assets/portada5.jpg" alt="Portada 5" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/1e293b/ffffff?text=Portada+5'">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
+                                    <p class="text-white text-sm font-semibold">Hobbies </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botones Anterior / Siguiente -->
+                        <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/60 text-white flex items-center justify-center hover:bg-slate-900 transition opacity-0 group-hover:opacity-100">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/60 text-white flex items-center justify-center hover:bg-slate-900 transition opacity-0 group-hover:opacity-100">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <!-- Puntos Indicadores -->
+                        <div class="absolute bottom-3 right-4 flex space-x-2 z-20" id="carousel-dots">
+                            <button onclick="goToSlide(0)" class="w-2.5 h-2.5 rounded-full bg-indigo-500 transition-all"></button>
+                            <button onclick="goToSlide(1)" class="w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white transition-all"></button>
+                            <button onclick="goToSlide(2)" class="w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white transition-all"></button>
+                            <button onclick="goToSlide(3)" class="w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white transition-all"></button>
+                            <button onclick="goToSlide(4)" class="w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white transition-all"></button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: VISTA DE GALERÍA (Oculta al inicio) -->
+        <section id="gallery-section" class="hidden space-y-6">
+            <!-- Encabezado de Categoría Activa -->
+            <div class="flex items-center justify-between border-b border-slate-700/60 pb-4">
+                <div>
+                    <h2 id="category-title" class="text-2xl font-bold text-white capitalize">Carrera</h2>
+                    <p id="category-desc" class="text-slate-400 text-sm mt-1">Colección de imágenes sobre proyectos profesionales.</p>
+                </div>
+                <span id="card-count" class="text-xs bg-slate-800 text-slate-400 px-3 py-1.5 rounded-full border border-slate-700 font-medium">5 imágenes</span>
+            </div>
+
+            <!-- Galería de 5 Imágenes -->
+            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
+                <!-- Tarjetas generadas con JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-slate-400">
+            <p>&copy; 2026 Mi Galería de Imágenes.Naomi Rivera Martel</p>
+        </div>
+    </footer>
+
+    <!-- Modal Lightbox -->
+    <div id="image-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4" onclick="closeModal()">
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl relative" onclick="event.stopPropagation()">
+            <button onclick="closeModal()" class="absolute top-4 right-4 bg-slate-900/80 text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-slate-700 transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="modal-img" src="" alt="" class="w-full h-80 sm:h-96 object-cover">
+            <div class="p-6">
+                <h3 id="modal-title" class="text-xl font-bold text-white mb-2"></h3>
+                <p id="modal-desc" class="text-slate-300 text-sm leading-relaxed"></p>
+            </div>
+        </div>
+    </div>
+<div id="youtube-player" class="hidden"></div>
+
+<!-- Widget Flotante de Spotify (Olivia Rodrigo - deja vu) -->
+<div id="spotify-widget" class="fixed bottom-4 right-4 z-50 w-72 sm:w-80 shadow-2xl rounded-xl overflow-hidden border border-slate-700/80 bg-slate-900/90 backdrop-blur-md transition-all duration-300">
+    <!-- Barra superior para minimizar/expandir -->
+    <div class="flex items-center justify-between px-3 py-1.5 bg-slate-800 border-b border-slate-700/60">
+        <span class="text-[11px] font-medium text-slate-300 flex items-center gap-1.5">
+            <i class="fa-brands fa-spotify text-emerald-400 text-sm"></i> Música de fondo
+        </span>
+        <button onclick="toggleSpotifyWidget()" class="text-slate-400 hover:text-white text-xs px-1.5 py-0.5 rounded transition" title="Minimizar/Maximizar">
+            <i id="spotify-toggle-icon" class="fa-solid fa-chevron-down"></i>
+        </button>
+    </div>
+    
+    <!-- Reproductor oficial de Spotify: deja vu - Olivia Rodrigo -->
+    <div id="spotify-iframe-container" class="transition-all duration-300">
+        <iframe 
+            style="border-radius:0px" 
+            src="https://open.spotify.com/embed/track/6HU7h9RYOaPRFeh0R3UeAr?utm_source=generator&theme=0" 
+            width="100%" 
+            height="80" 
+            frameBorder="0" 
+            allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy">
+        </iframe>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
